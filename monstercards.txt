@@ -1,0 +1,60 @@
+Dragón Blanco de Ojos Azules, Un dragón legendario con un poder destructivo inmenso, 3000,2500,DRAGON,LIGHT
+Mago Oscuro, Un mago experto en artes oscuras, 2500,2100,SPELLCASTER,DARK
+Mago de las Estrellas, Un hechicero que controla el poder de las estrellas, 2292,2234,SPELLCASTER,WIND
+Espectro del Vacío, Un guerrero espectral que emerge del vacío, 3945,3606,WARRIOR,WATER
+Caballero Luminoso, Un caballero que brilla con la luz de la justicia, 825,866,SPELLCASTER,EARTH
+Tigre Colmillo Blanco, Un tigre feroz con colmillos afilados como el hielo, 1626,2212,ZOMBI,LIGHT
+Sirena Encantadora, Una sirena que hipnotiza a sus enemigos con su canto, 1173,686,SPELLCASTER,WATER
+Robo-Destructor, Un robot diseñado para la destrucción total, 728,1812,SPELLCASTER,LIGHT
+Arquero Místico, Un arquero con habilidades místicas, 2002,1303,DRAGON,FIRE
+Minotauro del Laberinto, Un minotauro que guarda los secretos del laberinto, 1428,3978,SPELLCASTER,DARK
+Destructor Dimensional, Un ser que puede destruir dimensiones enteras, 3650,608,ZOMBI,EARTH
+Dragón Mecánico, Un dragón construido con tecnología avanzada, 3879,871,SPELLCASTER,LIGHT
+Espectro del Vacío, Un guerrero espectral que emerge del vacío, 2752,1766,SPELLCASTER,FIRE
+Lobo Lunar, Un lobo que aúlla bajo la luz de la luna, 1662,3001,SPELLCASTER,EARTH
+Paladín de la Luz, Un paladín que lucha por la justicia y la luz, 3735,3823,WARRIOR,LIGHT
+Guerrero Espadachín, Un guerrero experto en el uso de la espada, 3584,1228,DRAGON,WATER
+Destructor Dimensional, Un ser que puede destruir dimensiones enteras, 3640,1040,SPELLCASTER,EARTH
+Bestia Alada, Una bestia con alas poderosas, 3760,2631,DEMON,EARTH
+Hidra de Tres Cabezas, Una hidra con tres cabezas feroces, 1386,2147,WARRIOR,EARTH
+León Emperador, Un león que gobierna con fuerza y sabiduría, 2307,1269,ZOMBI,WIND
+Serpiente Marina, Una serpiente que habita en las profundidades del mar, 2993,3758,DEMON,WATER
+Serpiente Marina, Una serpiente que habita en las profundidades del mar, 2735,646,ZOMBI,DARK
+Paladín de la Luz, Un paladín que lucha por la justicia y la luz, 2312,724,ZOMBI,EARTH
+León Emperador, Un león que gobierna con fuerza y sabiduría, 3752,3745,DEMON,WATER
+Gólem de Hierro, Un gólem hecho de hierro indestructible, 3560,913,WARRIOR,WIND
+Mago de las Estrellas, Un hechicero que controla el poder de las estrellas, 2477,988,ZOMBI,WIND
+Serpiente Marina, Una serpiente que habita en las profundidades del mar, 3041,3923,DEMON,FIRE
+Espectro del Vacío, Un guerrero espectral que emerge del vacío, 2782,1929,DEMON,LIGHT
+Arquero Místico, Un arquero con habilidades místicas, 3795,3464,DEMON,WATER
+Destructor Dimensional, Un ser que puede destruir dimensiones enteras, 3633,3090,WARRIOR,DARK
+León Emperador, Un león que gobierna con fuerza y sabiduría, 2045,3130,DEMON,EARTH
+Arquero Místico, Un arquero con habilidades místicas, 1156,1304,DEMON,LIGHT
+Ángel Protector, Un ángel que protege a los inocentes, 2925,1967,BEAST,WATER
+Minotauro del Laberinto, Un minotauro que guarda los secretos del laberinto, 3828,3143,ZOMBI,WATER
+Caballero Luminoso, Un caballero que brilla con la luz de la justicia, 2655,3181,WARRIOR,FIRE
+Ángel Protector, Un ángel que protege a los inocentes, 2194,1302,BEAST,WATER
+Señor de los Dragones, Un hechicero que controla a los dragones, 3433,1690,SPELLCASTER,FIRE
+Guardián de la Cripta, Un demonio que guarda las criptas antiguas, 2104,2081,DEMON,FIRE
+Gólem de Hierro, Un gólem hecho de hierro indestructible, 1725,1549,WARRIOR,FIRE
+Kraken Oscuro, Un kraken que emerge de las profundidades oscuras, 3824,3835,DRAGON,LIGHT
+Sirena Encantadora, Una sirena que hipnotiza a sus enemigos con su canto, 1552,3003,BEAST,EARTH
+Señor de los Dragones, Un hechicero que controla a los dragones, 3564,2222,ZOMBI,WIND
+Samurái de las Sombras, Un samurái que se oculta en las sombras, 1440,1337,WARRIOR,WIND
+Mago Oscuro, Un mago experto en artes oscuras, 3553,2135,DEMON,LIGHT
+Kraken Oscuro, Un kraken que emerge de las profundidades oscuras, 2369,1756,WARRIOR,WATER
+León Emperador, Un león que gobierna con fuerza y sabiduría, 1287,1341,SPELLCASTER,LIGHT
+Gárgola Vengativa, Una gárgola que busca venganza, 1523,820,DEMON,WIND
+Guerrero Espadachín, Un guerrero experto en el uso de la espada, 2023,966,BEAST,EARTH
+Bestia Alada, Una bestia con alas poderosas, 1584,2077,ZOMBI,LIGHT
+Guardián de la Cripta, Un demonio que guarda las criptas antiguas, 3286,2398,DEMON,DARK
+Serpiente Marina, Una serpiente que habita en las profundidades del mar, 1069,2376,DRAGON,DARK
+Caballero del Abismo, Un caballero que emerge del abismo, 3488,1965,WARRIOR,LIGHT
+Furia de la Naturaleza, Una bestia que encarna la furia de la naturaleza, 3848,3771,BEAST,WIND
+Furia de la Naturaleza, Una bestia que encarna la furia de la naturaleza, 3373,614,ZOMBI,DARK
+Caballero del Abismo, Un caballero que emerge del abismo, 3930,2265,ZOMBI,WIND
+Espadachín Carmesí, Un espadachín con una espada carmesí, 1984,1429,BEAST,WATER
+Ángel Protector, Un ángel que protege a los inocentes, 2486,1168,WARRIOR,WIND
+Hidra de Tres Cabezas, Una hidra con tres cabezas feroces, 1386,2147,WARRIOR,EARTH
+León Emperador, Un león que gobierna con fuerza y sabiduría, 2307,1269,ZOMBI,WIND
+Serpiente Marina, Una serpiente que habita en las profundidades del mar, 2993,3758,DEMON,WATER

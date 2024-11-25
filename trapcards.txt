@@ -1,0 +1,11 @@
+Fuego Sagrado,Impide el ataque de un monstruo de atributo Fuego,FIRE
+Corriente Congelante,Impide el ataque de un monstruo de atributo Agua,WATER
+Fortaleza de Piedra,Impide el ataque de un monstruo de atributo Tierra,EARTH
+Vendaval Impenetrable,Impide el ataque de un monstruo de atributo Viento,WIND
+Luz Divina,Impide el ataque de un monstruo de atributo Luz,LIGHT
+Llamarada Protectora,Impide el ataque de un monstruo de atributo Fuego,FIRE
+Marea Defensiva,Impide el ataque de un monstruo de atributo Agua,WATER
+Muralla de Roca,Impide el ataque de un monstruo de atributo Tierra,EARTH
+Torbellino Guardián,Impide el ataque de un monstruo de atributo Viento,WIND
+Escudo Luminoso,Impide el ataque de un monstruo de atributo Luz,LIGHT
+Sombra Protectora,Impide el ataque de un monstruo de atributo Oscuridad,DARK

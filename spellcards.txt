@@ -1,0 +1,10 @@
+Espada del Dragón,Incrementa el ataque de un monstruo tipo Dragón,DRAGON,500,0
+Escudo del Guerrero,Incrementa la defensa de un monstruo tipo Guerrero,WARRIOR,0,700
+Amuleto del Mago,Incrementa el ataque y la defensa de un monstruo tipo Mago,SPELLCASTER,300,300
+Armadura de la Bestia,Incrementa la defensa de un monstruo tipo Bestia,BEAST,0,1000
+Lanza del Guerrero,Incrementa el ataque de un monstruo tipo Guerrero,WARRIOR,400,0
+Capa del Hechicero,Incrementa la defensa de un monstruo tipo Hechicero,SPELLCASTER,0,600
+Espada del Guerrero,Incrementa el ataque y la defensa de un monstruo tipo Guerrero,WARRIOR,200,200
+Escudo del Dragón,Incrementa la defensa de un monstruo tipo Dragón,DRAGON,0,800
+Báculo del Mago,Incrementa el ataque de un monstruo tipo Mago,SPELLCASTER,600,0
+Armadura del Guerrero,Incrementa la defensa de un monstruo tipo Guerrero,WARRIOR,0,500
