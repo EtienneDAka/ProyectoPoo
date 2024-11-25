@@ -14,6 +14,8 @@ class Player:
         ]
         self.life = 4000
     
+    def showLife(self):
+        return self.life
 
     def draw_card(self):
         card = Deck.draw_card(self.deck)
@@ -26,17 +28,20 @@ class Player:
             for i in range(3):
                 if self.field[0][i] is None:
                     self.field[0][i] = card
-                    print(f"{self.name} coloco {card.name} en la zona de monstruos") 
+                    if card.getPosition() == 2:
+                        print(f"{self.name} coloco {card.name} en la zona de monstruos [{card.getAttack} ATK]")
+                    else:
+                        print(f"{self.name} coloco en la zona de monstruos")
                     return card
             print("No hay espacios disponibles")
         else:
             for i in range(3):
                 if self.field[1][i] is None:
                     self.field[1][i] = card
-                    print(f"{self.name} coloco {card.name} en la zona de magicas/trampas")                     
+                    print(f"{self.name} coloco una carta en la zona de magicas/trampas")                     
                     return card
     
-    def take_damage(self, damage):
+    def take_damage(self, damage:int):
         self.life -= damage
         print(f"{self.name} ha recibido {damage} puntos de daño.")         
     
@@ -57,8 +62,12 @@ class Player:
     def show_hand(self):
         print(f"Mano de {self.name}:")
         for i, card in enumerate(self.hand):
-            print(f"{i}: {card.name}")
-        
+            if isinstance(card, MonsterCard):
+                print(f"{i}: [M] {card.name} | [{card.getAttack()} ATK / {card.getDefense()} DEF]\nAtributo: {card.getMonsterAttribute()} Tipo: {card.getMonsterType()}")
+            elif isinstance(card, SpellCard):
+                print(f'{i}: [S] {card.name}\n{card.getEffect()}')
+            elif isinstance(card, TrapCard):
+                print(f'{i}: [T] {card.name}\n{card.getEffect()}')
     def getWeakestMonster(self):
         if not self.field[0][0]:
             return None
@@ -90,7 +99,7 @@ class Machine(Player):
                         print(f"{self.name} colocó {card.name} en la zona de monstruos en posición de ataque.") 
                     else:
                         card.setPosition(Position.FACE_DOWN)
-                        print(f"{self.name} colocó {card.name} en la zona de monstruos en posición boca abajo.") 
+                        print(f"{self.name} colocó una carta en la zona de monstruos en posición boca abajo.") 
                     self.field[0][i] = card
                     return card
         else:
@@ -98,6 +107,6 @@ class Machine(Player):
                 if self.field[1][i] is None:
                     card.setPosition(Position.FACE_DOWN)
                     self.field[1][i] = card
-                    print(f"{self.name} colocó {card.name} en la zona de mágicas/trampas.")
+                    print(f"{self.name} colocó una carta en la zona de mágicas/trampas.")
                     return card
         return None

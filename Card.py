@@ -119,3 +119,6 @@ class TrapCard(Card):
         else:
             print(f"La carta trampa '{self.name}' no puede ser activado contra '{attackingMonster.name}'.")
             return False
+    
+    def getEffect(self):
+        return self.description
