@@ -1,6 +1,7 @@
 import random
-from Card import MonsterCard, SpellCard, TrapCard
+
 from MonsterType import MonsterType
+from Card import MonsterCard, SpellCard, TrapCard
 from MonsterAttribute import MonsterAttribute
 
 class Deck:

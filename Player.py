@@ -17,6 +17,28 @@ class Player:
     def showLife(self):
         return self.life
 
+    @staticmethod
+    def format_card(card, row_index):
+        from Position import Position
+        if card is None:
+            return "[          ]" 
+        if card.getPosition() == Position.FACE_DOWN:
+            placeholder = "M" if row_index == 0 else "C"
+            return f"[{placeholder:^10}]"
+        return f"[{card.name:^10}]"
+
+    
+
+    def display_field(self):
+        field_matrix = []
+        for row_index, row in enumerate(self.field):
+            field_matrix.append([
+                self.format_card(cell, row_index) for cell in row
+            ])
+        monsters_row = " ".join(field_matrix[0])
+        spells_traps_row = " ".join(field_matrix[1])
+        return f"{self.name} (Life: {self.life})\n{monsters_row}\n{spells_traps_row}\n"
+
     def draw_card(self):
         card = Deck.draw_card(self.deck)
         self.hand.append(card)
@@ -63,11 +85,12 @@ class Player:
         print(f"Mano de {self.name}:")
         for i, card in enumerate(self.hand):
             if isinstance(card, MonsterCard):
-                print(f"{i}: [M] {card.name} | [{card.getAttack()} ATK / {card.getDefense()} DEF]\nAtributo: {card.getMonsterAttribute()} Tipo: {card.getMonsterType()}")
+                print(f"{i}: [M] {card.name} [{card.getMonsterType()}] | [{card.getAttack()} ATK / {card.getDefense()} DEF] {'Atributo: '} {card.getMonsterAttribute()}")
             elif isinstance(card, SpellCard):
-                print(f'{i}: [S] {card.name}\n{card.getEffect()}')
+                print(f'{i}: [S] {card.name} | {card.getEffect()}')
             elif isinstance(card, TrapCard):
-                print(f'{i}: [T] {card.name}\n{card.getEffect()}')
+                print(f'{i}: [T] {card.name} | {card.getEffect()}')
+                
     def getWeakestMonster(self):
         if not self.field[0][0]:
             return None

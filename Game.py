@@ -7,7 +7,6 @@ class Game:
         self.current_player = self.player1
         self.opponent = self.machine
         self.turn = 1
-        self.start_game()
 
     def start_game(self):
         for _ in range(5):
@@ -20,14 +19,18 @@ class Game:
         while self.player1.life > 0 and self.machine.life > 0:
             print(f'TURNO: {self.turn}')
             if self.current_player == self.machine:
-                print(f"\nTurno de {self.machine.name}")
-                print(f'LP: {self.machine.showLife()}')
-                print("==================================\n")
+                print(f"\nTurno de {self.machine.name:<25}{'LP: ':>25}{self.machine.showLife()}")
+                print("="*64)
+                print(f"\n{'':<28} Campo de juego {'':>28}")
+                print(self.current_player.display_field())
                 self.play_machine_turn()
             else:
-                print(f"\nTurno de {self.player1.name}")
-                print(f'LP: {self.current_player.showLife()}')
-                print("==================================\n")
+                print(f"\nTurno de {self.player1.name:<25}{'LP: ':>25}{self.current_player.showLife()}")
+                print("="*64)
+                print(f"\n{'':<25} Campo de juego {'':>25}")
+                print(self.current_player.display_field())
+                
+
                 self.play_turn()
             self.turn += 1
             self.switch_turn()
@@ -39,11 +42,13 @@ class Game:
         self.current_player.draw_card()
         self.current_player.show_hand()
         mano = self.current_player.hand
-        input_continuar = 'S'
+        input_continuar = 'Y'
         monster_counter = 0
-        while [isinstance(i, SpellCard) or isinstance(i, TrapCard) for i in mano] and input_continuar == 'S':
+        while any(isinstance(i, SpellCard) for i in mano) or any(isinstance(x, TrapCard) for x in mano) and input_continuar == 'Y':
             input_continuar = input("Desea agregar una carta? Y/N\n").upper()
-            if self.turn > 2:
+            while input_continuar not in ['Y', 'N']:
+                input_continuar = input("Por favor, elige una opción válida (Y/N): ").upper()
+            if self.turn > 2 and  any(isinstance(c, MonsterCard) for c in self.current_player.field[0]):
                 choice = input("Deseas cambiar la posición de alguna carta? (S/N): ")
                 while choice not in ['S', 'N']:
                     choice = input("Por favor, elige una opción válida (S/N): ")
@@ -58,16 +63,14 @@ class Game:
             while not choice.isdigit() or int(choice) >= len(self.current_player.hand):
                 choice = input(f"Por favor, elige un número valido (>= 0 | <= {len(self.current_player.hand)-1}): ")
             card_index = int(choice)
-            if monster_counter == 0:
-                card = self.current_player.play_card(card_index)
-            else:
-                print("No se puede colocar más de 1 monstruo por turno...")
-            
-            if isinstance(card, MonsterCard):
+            card = self.current_player.hand[card_index]
+
+            if isinstance(card, MonsterCard) and monster_counter == 0:
                 monster_counter += 1
-                positionChoice = input("Desea colocar la carta en posición de ataque o defensa? (A/D): ")
+                card = self.current_player.play_card(card_index)
+                positionChoice = input("Desea colocar la carta en posición de ataque o defensa? (A/D): ").upper()
                 while positionChoice not in ['A', 'D']:
-                    positionChoice = input("Por favor, elige una posición válida (A/D): ")
+                    positionChoice = input("Por favor, elige una posición válida (A/D): ").upper()
                 if positionChoice == 'A':
                     card.setPosition(Position.FACE_UP_ATAQUE)
                 else:
@@ -84,18 +87,20 @@ class Game:
                     attack = input("Por favor, elige una posición válida (S/N): ")
                 if attack == 'S':
                     self.current_player.show_hand()
-                    monsterChoice = input("Perfecto eligue un monstruo de tu campo con el cual deseas atacar")
+                    monsterChoice = input("Perfecto elige un monstruo de tu campo con el cual deseas atacar")
                     while not monsterChoice.isdigit() or int(monsterChoice) >= len(self.current_player.hand):
                         monsterChoice = input(f"Por favor, elige un número valido (>= 0 | <= {len(self.current_player.hand)-1}): ")
                     card2 = self.current_player.field[0][int(monsterChoice)]
                     self.attack_phase(card2)
+            else:
+                print("No se puede colocar más de 1 monstruo por turno...")
 
     def play_machine_turn(self):
         from Card import MonsterCard
         self.machine.draw_card()
         card = self.machine.playRandomCard(self.player1)
         if isinstance(card, MonsterCard) and self.turn > 1:
-            self.attack_phase(card)
+            self.attack_phase_machine(card)
         
     def change_position(self, monster_card):
         from Position import Position
@@ -111,8 +116,6 @@ class Game:
         from Card import MonsterCard
         if isinstance(monster_card, MonsterCard):
             print("Eligiendo un objetivo de ataque en el campo enemigo.")
-            # EDITAR PARA QUE EL USUARIO ELIJA EL INPUT
-        
             index_ataque = int(input(f"Elija un objetivo a atacar entre el: 0 - {len(self.machine.field[0])}"))
             enemy_monster = self.machine.field[0][index_ataque]
             if not (isinstance(enemy_monster, MonsterCard)) and not (MonsterCard in self.machine.field):
@@ -121,7 +124,17 @@ class Game:
                 self.opponent.take_damage(monster_card.getAttack())
             else:
                 monster_card.perform_attack(enemy_monster, self.opponent, self.current_player)
-                
+    
+    def attack_phase_machine(self, monster_card):
+        print("Eligiendo un objetivo de ataque en el campo enemigo.")
+        opponent_monster = self.opponent.getWeakestMonster()
+        if not opponent_monster:
+            print("No hay monstruos en el campo enemigo.")
+            print(f"{monster_card.name} ataca directamente a {self.opponent.name}")
+            self.opponent.take_damage(monster_card.attack)
+        else:
+            print(f"{monster_card.name} ataca a {opponent_monster.name}")
+            monster_card.perform_attack(opponent_monster, self.opponent, self.current_player)
 
     
     def who_plays_first(self):
@@ -146,3 +159,4 @@ class Game:
 
 
 game = Game("PLAYER1")
+game.start_game()
