@@ -47,10 +47,10 @@ class MonsterCard(Card):
         for card in player_enemigo.field[1]:
             if isinstance(card, TrapCard):
                 if card.activate(self):
-                    print(f"{self.name}'s attack is negated!")
+                    print(f"El ataque de {self.name} es negado!")
                     player_enemigo.remove_magic_card(card)
                     return None
-        print(f"{self.name} attacks {enemy.name}!")
+
         if enemy.getPosition() == Position.FACE_UP_ATAQUE:
             if self.attack > enemy.getAttack():
                 print(f"{self.name} destroys {enemy.name}.")
@@ -58,10 +58,10 @@ class MonsterCard(Card):
                 player_enemigo.take_damage(dmg_real)
                 return True
             elif self.attack == enemy.getAttack():
-                print(f"{self.name} and {enemy.name} destroy each other!")
+                print(f"{self.name} y {enemy.name} se destruyen entre sí!")
                 return None
             else:
-                print(f"{enemy.name} withstands the attack and destroys {self.name}.")
+                print(f"{enemy.name} aguantó el ataque, y destruye a {self.name}.")
                 dmg_real = enemy.getAttack - self.attack
                 player_self.take_damage(dmg_real)
                 return False

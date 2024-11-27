@@ -17,19 +17,18 @@ class Player:
     def showLife(self):
         return self.life
 
-    @staticmethod
-    def format_card(card, row_index):
+    def format_card(self, card, row_index):
         from Position import Position
         if card is None:
             return "[          ]" 
         if card.getPosition() == Position.FACE_DOWN:
             placeholder = "M" if row_index == 0 else "C"
             return f"[{placeholder:^10}]"
+        if isinstance(card, MonsterCard):
+            return f"[{card.name:^10} - {card.getAttack()} ATK / {card.getDefense()} DEF]"
         return f"[{card.name:^10}]"
 
-    
-
-    def display_field(self):
+    def display_field(self, isOpponent=False):
         field_matrix = []
         for row_index, row in enumerate(self.field):
             field_matrix.append([
@@ -37,7 +36,10 @@ class Player:
             ])
         monsters_row = " ".join(field_matrix[0])
         spells_traps_row = " ".join(field_matrix[1])
-        return f"{self.name} (Life: {self.life})\n{monsters_row}\n{spells_traps_row}\n"
+        if isOpponent:
+            return f"\n{spells_traps_row}\n{monsters_row}\n"
+        else:
+            return f"\n{monsters_row}\n{spells_traps_row}\n"
 
     def draw_card(self):
         card = Deck.draw_card(self.deck)
@@ -82,7 +84,6 @@ class Player:
                 return   
             
     def show_hand(self):
-        print(f"Mano de {self.name}:")
         for i, card in enumerate(self.hand):
             if isinstance(card, MonsterCard):
                 print(f"{i}: [M] {card.name} [{card.getMonsterType()}] | [{card.getAttack()} ATK / {card.getDefense()} DEF] {'Atributo: '} {card.getMonsterAttribute()}")
