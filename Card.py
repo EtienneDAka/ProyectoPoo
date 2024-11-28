@@ -45,10 +45,10 @@ class MonsterCard(Card):
     
     def perform_attack(self, enemy: 'MonsterCard', player_enemigo, player_self):
         for card in player_enemigo.field[1]:
-            if isinstance(card, TrapCard) and player_enemigo == self.owner:  
-                if card.activate(self): 
+            if isinstance(card, TrapCard):
+                if card.activate(self):
                     print(f"El ataque de {self.name} es negado!")
-                    player_enemigo.remove_magic_card(card) 
+                    player_enemigo.remove_magic_card(card)
                     return None
         
         if enemy.getPosition() == Position.FACE_UP_ATAQUE.value:
@@ -100,8 +100,6 @@ class TrapCard(Card):
         self.affectsMonster = affectsMonster
 
     def activate(self, attackingMonster:MonsterCard):
-        if self.isActive: 
-            return False
         if attackingMonster.attribute.value == self.affectsMonster.value:
             self.isActive = True
             print(f"La carta trampa '{self.name}' es activada y niega el ataque de '{attackingMonster.name}'!")
