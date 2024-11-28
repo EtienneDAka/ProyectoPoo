@@ -161,6 +161,9 @@ class Game:
         
     def change_position(self, monster_card):
         from Position import Position
+        if card is None:
+            print("No se seleccionó una carta válida.")
+            return
         position = input("Desea cambiar la posición de la carta? (A/D): ")
         while position not in ['A', 'D']:
             position = input("Por favor, elige una posición válida (A/D): ")
