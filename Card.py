@@ -44,6 +44,7 @@ class MonsterCard(Card):
         self.defense = defense
     
     def perform_attack(self, enemy: 'MonsterCard', player_enemigo, player_self):
+        from Player import Player
         for card in player_enemigo.field[1]:
             if isinstance(card, TrapCard):
                 if card.activate(self):
@@ -56,22 +57,27 @@ class MonsterCard(Card):
                 print(f"{self.name} destroys {enemy.name}.")
                 dmg_real = self.attack - enemy.getAttack()
                 player_enemigo.take_damage(dmg_real)
+                player_enemigo.remove_monster_card(enemy)
                 return True
             elif self.attack == enemy.getAttack():
                 print(f"{self.name} y {enemy.name} se destruyen entre sí!")
+                player_enemigo.remove_monster_card(enemy)
+                player_self.remove_monster_card(self)
                 return None
             else:
                 print(f"{enemy.name} aguantó el ataque, y destruye a {self.name}.")
+                player_self.remove_monster_card(self)
                 dmg_real = enemy.getAttack() - self.attack
                 player_self.take_damage(dmg_real)
                 return False
         elif enemy.getPosition() == Position.FACE_UP_DEFENSA.value or enemy.getPosition() == Position.FACE_DOWN.value:
             if self.getAttack() > enemy.getDefense():
+                player_enemigo.remove_monster_card(enemy)
                 return True
             elif self.getAttack() == enemy.getDefense():
                 return None
             elif self.getAttack() < enemy.getDefense():
-                return False
+                dmg_real = enemy.getDefense - self.getAttack()
     
 class SpellCard(Card):
 

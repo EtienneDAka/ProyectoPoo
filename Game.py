@@ -23,8 +23,8 @@ class Game:
                 print("="*64)
                 print(f"\n{self.current_player.name:<28} Campo de juego {self.opponent.name:>28}")
                 
-                print(self.opponent.display_field(True))
-                print(self.current_player.display_field())
+                # print(self.opponent.display_field(True))
+                # print(self.current_player.display_field())
                 self.play_machine_turn()
             else:
                 print(f"\nTurno de {self.player1.name:<25}{'LP: ':>25}{self.current_player.showLife()}")
@@ -82,8 +82,7 @@ class Game:
                 
                 if isinstance(card, MonsterCard) and monster_counter == 0:
                     monster_counter += 1
-                    card = self.current_player.play_card(card_index)
-                    
+                    card = self.current_player.play_card(card_index)    
                     positionChoice = input("Desea colocar la carta en posición de ataque o defensa? (A/D): ").upper()
                     while positionChoice not in ['A', 'D']:
                         positionChoice = input("Por favor, elige una posición válida (A/D): ").upper()
@@ -92,7 +91,10 @@ class Game:
                         card.setPosition(Position.FACE_UP_ATAQUE)
                     elif positionChoice == 'D':
                         card.setPosition(Position.FACE_DOWN)
-                        
+                    
+                    print(self.machine.display_field(True))
+                    print(self.player1.display_field())
+                    
                     if self.turn > 2 and positionChoice == 'A':
                         attackChoice = input("Desea atacar con la carta? (S/N): ")
                         while attackChoice not in ['S', 'N']:
@@ -120,12 +122,16 @@ class Game:
                             
                         card2 = self.current_player.field[0][int(monsterChoice)]
                         self.attack_phase(card2)
+                        print(self.machine.display_field(True))
+                        print(self.player1.display_field())
                         
                 elif isinstance(card, MonsterCard) and monster_counter > 0:
                     print("No se puede colocar más de 1 monstruo por turno...")
                 
                 elif isinstance(card, SpellCard):
                     card = self.current_player.play_card(card_index)
+                    print(self.machine.display_field(True))
+                    print(self.player1.display_field())
                     for monster in self.current_player.field[0]:
                         if monster is not None:
                             isActived = card.activate(monster)
@@ -135,6 +141,8 @@ class Game:
                 
                 elif isinstance(card, TrapCard):
                         card = self.current_player.play_card(card_index)
+                        print(self.machine.display_field(True))
+                        print(self.player1.display_field())
                         
             if input_continuar == 'N' and self.turn > 2:
                 attack_choice = input("Desear atacar con algún monstruo? (S/N): ")
@@ -151,6 +159,8 @@ class Game:
 
                     card2 = self.current_player.field[0][int(monsterChoice)]
                     self.attack_phase(card2)
+                    print(self.machine.display_field(True))
+                    print(self.player1.display_field())
                     
     def play_machine_turn(self):
         from Card import MonsterCard
