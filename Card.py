@@ -54,7 +54,7 @@ class MonsterCard(Card):
         
         if enemy.getPosition() == Position.FACE_UP_ATAQUE.value:
             if self.attack > enemy.getAttack():
-                print(f"{self.name} destroys {enemy.name}.")
+                print(f"{self.name} destruye {enemy.name}.")
                 dmg_real = self.attack - enemy.getAttack()
                 player_enemigo.take_damage(dmg_real)
                 player_enemigo.remove_monster_card(enemy)
@@ -77,7 +77,7 @@ class MonsterCard(Card):
             elif self.getAttack() == enemy.getDefense():
                 return None
             elif self.getAttack() < enemy.getDefense():
-                dmg_real = enemy.getDefense - self.getAttack()
+                dmg_real = enemy.getDefense() - self.getAttack()
     
 class SpellCard(Card):
 
