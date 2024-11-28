@@ -50,8 +50,8 @@ class MonsterCard(Card):
                     print(f"El ataque de {self.name} es negado!")
                     player_enemigo.remove_magic_card(card)
                     return None
-
-        if enemy.getPosition() == Position.FACE_UP_ATAQUE:
+        
+        if enemy.getPosition() == Position.FACE_UP_ATAQUE.value:
             if self.attack > enemy.getAttack():
                 print(f"{self.name} destroys {enemy.name}.")
                 dmg_real = self.attack - enemy.getAttack()
@@ -62,10 +62,10 @@ class MonsterCard(Card):
                 return None
             else:
                 print(f"{enemy.name} aguantó el ataque, y destruye a {self.name}.")
-                dmg_real = enemy.getAttack - self.attack
+                dmg_real = enemy.getAttack() - self.attack
                 player_self.take_damage(dmg_real)
                 return False
-        elif enemy.getPosition() == Position.FACE_UP_DEFENSA or enemy.getPosition() == Position.FACE_DOWN:
+        elif enemy.getPosition() == Position.FACE_UP_DEFENSA.value or enemy.getPosition() == Position.FACE_DOWN.value:
             if self.getAttack() > enemy.getDefense():
                 return True
             elif self.getAttack() == enemy.getDefense():
@@ -105,7 +105,6 @@ class TrapCard(Card):
             print(f"La carta trampa '{self.name}' es activada y niega el ataque de '{attackingMonster.name}'!")
             return True
         else:
-            print(f"La carta trampa '{self.name}' no puede ser activado contra '{attackingMonster.name}'.")
             return False
     
     def getEffect(self):

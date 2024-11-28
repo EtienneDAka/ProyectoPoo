@@ -21,7 +21,7 @@ class Player:
         from Position import Position
         if card is None:
             return "[          ]" 
-        if card.getPosition() == Position.FACE_DOWN:
+        if card.getPosition() == Position.FACE_DOWN.value:
             placeholder = "M" if row_index == 0 else "C"
             return f"[{placeholder:^10}]"
         if isinstance(card, MonsterCard):
@@ -93,13 +93,15 @@ class Player:
                 print(f'{i}: [T] {card.name} | {card.getEffect()}')
                 
     def getWeakestMonster(self):
-        if not self.field[0][0]:
-            return None
-        weakest = self.field[0][0]
+        temp = None
+                
         for card in self.field[0]:
-            if isinstance(card, MonsterCard) and card.getAttack() < weakest.getAttack():
-                weakest = card
-        return weakest
+            if isinstance(card, MonsterCard):
+                if temp is None:
+                    temp = card
+                elif card.getAttack() < temp.getAttack():
+                    temp = card
+        return temp
             
     
 class Machine(Player): 
